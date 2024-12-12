@@ -1,0 +1,25 @@
+{
+    "name": "dsw/tema6",
+    "description": "programación por capas",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Dsw\\Tema6\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yeray Navarro",
+            "email": "yeraynp16@gmail.com"
+        }
+    ],
+    "require": {
+        "altorouter/altorouter": "^2.0",
+        "philo/laravel-blade": "^3.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}
