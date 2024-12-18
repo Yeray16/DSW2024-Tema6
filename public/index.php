@@ -6,6 +6,7 @@ use Philo\Blade\Blade;
 require '../vendor/autoload.php';
 
 $router = new AltoRouter();
+
 $views = '../src/views';
 $cache = '../cache';
 $blade = new Blade($views, $cache);
@@ -18,7 +19,7 @@ $router->map('GET', '/', function() use ($blade){
 });
 
 $router->map('GET', '/user', 'UserController#index', 'index');
-$router->map('GET|POST', '/user/[i:id]', 'UserController#show', 'user-details');
+$router->map('GET|POST', '/user/[i:id]', 'UserController#show', 'user-show');
 
 // echo URL to user-details page for ID 5
 //echo $router->generate('user-details', ['id' => 5]); // Output: "/users/5"

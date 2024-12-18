@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Estás en index.php</h1>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('title', 'Página INDEX')
+
+@section('content')
+  <h2>Estos es Index</h2>
+  <h3>Esto es texto</h3>
+  @parent
+@endsection

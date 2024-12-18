@@ -2,14 +2,23 @@
 
 namespace Dsw\Tema6\Controllers;
 
-class UserController {
+use Dsw\Tema6\Models\User;
+
+class UserController extends Controller {
   
   public function index() {
-    require __DIR__ . '/../views/user.php';
+    $users = User::all();
+    echo $this->blade->view()->make('user.index', compact('users'))->render();
   }
 
   public function show($params) {
     $id = $params['id'];
-    require __DIR__ . '/../views/user-detail.php';
+    //Busco en base datos:
+    $user = User::get($id);
+    $data = [
+       'user' => $user,
+       'title' => 'Usuario'
+    ];
+    echo $this->blade->view()->make('user.show', $data)->render();
   }
 }
