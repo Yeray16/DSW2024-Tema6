@@ -2,42 +2,27 @@
 
 namespace Dsw\Tema6\Models;
 
-use PDO;
-use PDOException;
-
 class User {
+  private int $id;
+  private string $name;
+  private string $surname;
+  private string $email;
 
-  static private $link;
-
-
-  public function __construct()
+  public function __construct(int $id, string $name, string $surname, string $email)
   {
-    $host = "localhost";
-    $user = "root";
-    $password = "";
-    $db = "capasdb";
-
-    $dsn = "mysql:host=$host;dbname=$db";
-
-    try {
-      self::$link = new PDO($dsn, $user, $password);
-      self::$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $ex) {
-      die('Error en la conexión: '.$ex->getMessage());
-    }
+    $this->id = $id;
+    $this->name = $name;
+    $this->surname = $surname;
+    $this->email = $email;
     
   }
 
-  public static function all() {
-    $stmt = self::$link->prepare('SELECT * FROM users');
-    $stmt->execute();
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $users;
-  }
+  public function getId() {return $this->id;}
 
-  public static function get($id) {
-    // return array_first(self::$users, function($user) use($id) {
-    //   return $user['id'] == $id;
-    // });
-  }
+  public function getName() {return $this->name;}
+
+  public function getSurname() {return $this->surname;}
+  
+  public function getEmail() {return $this->email;}
+
 }

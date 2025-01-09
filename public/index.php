@@ -19,7 +19,7 @@ $router->map('GET', '/', function() use ($blade){
 });
 
 $router->map('GET', '/user', 'UserController#index', 'index');
-$router->map('GET|POST', '/user/[i:id]', 'UserController#show', 'user-show');
+$router->map('GET', '/user/[i:id]', 'UserController#show', 'user-show');
 
 // echo URL to user-details page for ID 5
 //echo $router->generate('user-details', ['id' => 5]); // Output: "/users/5"
