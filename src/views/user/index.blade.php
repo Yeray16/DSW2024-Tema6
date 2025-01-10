@@ -20,7 +20,13 @@
         <td>{{ $user->getId()}}</td>
         <td>{{ $user->getName() }}</td>
         <td>{{ $user->getSurname() }}</td>
-        <td><a href="/user/{{ $user->getId() }}">Editar</a></td>
+        <td>
+          <a href="/user/{{ $user->getId() }}">Editar</a>
+          <form action="/user/{{ $user->getId() }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Eliminar">
+          </form>
+        </td>
       </tr>
       @endforeach
     </tbody>
