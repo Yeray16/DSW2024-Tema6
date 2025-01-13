@@ -21,8 +21,9 @@
         <td>{{ $user->getName() }}</td>
         <td>{{ $user->getSurname() }}</td>
         <td>
-          <a href="/user/{{ $user->getId() }}">Editar</a>
-          <form action="/user/{{ $user->getId() }}" method="post">
+          <button><a href="/user/{{ $user->getId() }}">Mostrar</a></button>
+          <button><a href="/user/{{ $user->getId() }}/edit">Editar</a></button>
+          <form action="/user/{{ $user->getId() }}" method="post" class="inline">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Eliminar">
           </form>

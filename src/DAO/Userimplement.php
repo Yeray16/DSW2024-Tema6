@@ -48,4 +48,21 @@ class Userimplement {
     $stmt->bindParam(':email', $email);
     $stmt->execute();
   }
+
+  public function delete(int $id) {
+    $query = "DELETE FROM users WHERE id = :id";
+    $stmt = $this->db->getConnection()->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+  }
+  
+  public function update(int $id, string $name, string $surname, string $email) {
+    $query = "UPDATE users SET name = :name, surname = :surname, email = :email WHERE id = :id";
+    $stmt = $this->db->getConnection()->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':surname', $surname);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+  }
 }
