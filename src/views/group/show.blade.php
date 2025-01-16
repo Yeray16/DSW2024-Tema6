@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $title)
+@section('title', 'Show-Groups')
 
 @section('content')
 @if ($group)
@@ -14,7 +14,7 @@
     <input type="submit" value="Eliminar">
   </form>
   </p>
-  <h3>Usuarios:</h3>
+  <h3>Usuarios pertenecientes al grupo:</h3>
   <ul>
     @foreach($group->users() as $user)
       <li>{{ $user->getName() }}</li>

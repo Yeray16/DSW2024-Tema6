@@ -2,6 +2,8 @@
 
 namespace Dsw\Tema6\Models;
 
+use Dsw\Tema6\DAO\Groupimplement;
+
 class User {
   private int $id;
   private string $name;
@@ -25,4 +27,8 @@ class User {
   
   public function getEmail() {return $this->email;}
 
+  public function groups() {
+    $groupDAO = new Groupimplement();
+    return $groupDAO->findGroupsByUserId($this->id);
+  }
 }

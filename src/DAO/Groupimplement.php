@@ -61,4 +61,19 @@ class Groupimplement  {
     $stmt->bindParam(':name', $name);
     $stmt->execute();
   }
+
+  public function findGroupsByUserId(int $id) {
+    $query = "SELECT id, name FROM `groups` INNER JOIN group_user ON `groups`.id = group_user.id_group WHERE group_user.id_user = :id_user";
+    $stmt = $this->db->getConnection()->prepare($query);
+    $stmt->bindParam(':id_user', $id);
+    $stmt->execute();
+    $groups = [];
+
+    while ($associate = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      $group = new Group($associate['id'], $associate['name']);
+      $groups[] = $group;
+    }
+    
+    return $groups;
+  }
 }

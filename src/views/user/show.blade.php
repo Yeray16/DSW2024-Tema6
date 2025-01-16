@@ -15,6 +15,12 @@
     <input type="submit" value="Eliminar">
   </form>
   </p>
+  <h3>Grupos a los que pertenece:</h3>
+  <ul>
+    @foreach($user->groups() as $group)
+      <li>{{ $group->getName() }}</li>
+    @endforeach
+  </ul>
 @else
   <h2>Usuario no encontrado</h2>
 @endif
