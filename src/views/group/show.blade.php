@@ -17,9 +17,12 @@
   <h3>Usuarios pertenecientes al grupo:</h3>
   <ul>
     @foreach($group->users() as $user)
-      <li>{{ $user->getName() }}</li>
+      <li><a href="/user/{{$user->getId() }}">{{ $user->getName() }}</a></li>
     @endforeach
   </ul>
+  <p>
+    <a href="/group/{{ $group->getId() }}/users"><button>Modificar Usuarios</button></a>
+  </p>
 @else
   <h2>Grupo no encontrado</h2>
 @endif

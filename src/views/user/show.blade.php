@@ -18,7 +18,7 @@
   <h3>Grupos a los que pertenece:</h3>
   <ul>
     @foreach($user->groups() as $group)
-      <li>{{ $group->getName() }}</li>
+      <li><a href="/group/{{ $group->getId() }}">{{ $group->getName() }}</a></li>
     @endforeach
   </ul>
 @else
