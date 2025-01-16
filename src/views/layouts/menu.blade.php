@@ -7,3 +7,9 @@
 <li>
   <a href="/user/create">Crear un usuario</a>
 </li>
+<li>
+  <a href="/group">Grupos</a>
+</li>
+<li>
+  <a href="/group/create">Crear un grupo</a>
+</li>

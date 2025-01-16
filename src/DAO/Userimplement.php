@@ -65,4 +65,22 @@ class Userimplement {
     $stmt->bindParam(':email', $email);
     $stmt->execute();
   }
+
+  public function findUsersByGroupId (int $id) {
+    $query = 'SELECT id, name, surname, email FROM users INNER JOIN group_user ON users.id = group_user.id_user WHERE group_user.id_group = :id_group';
+    $stmt = $this->db->getConnection()->prepare($query);
+    $stmt->bindParam(':id_group', $id);
+    $stmt->execute();
+    $users = [];
+    while( $userRecord = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      $user = new User(
+        $userRecord['id'], 
+        $userRecord['name'],
+        $userRecord['surname'],
+        $userRecord['email']
+      );
+      $users[] = $user;
+    }
+    return $users;
+  }
 }
