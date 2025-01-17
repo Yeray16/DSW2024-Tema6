@@ -75,8 +75,32 @@ class GroupController extends Controller{
 
   public function postusers($param) {
     $idGroup = $param['id'];
-    echo $idGroup;
-    echo "<br>";
-    var_dump($_POST);
+    $newIds = isset($_POST['usersid']) ? $_POST['usersid'] : [];
+
+    $groupDAO = new GroupImplement();
+    $group = $groupDAO->findById($idGroup);
+    $oldIds = array_map(
+      fn($user) => $user->getId(),
+      $group->users()
+    );
+    echo "<hr> VIEJOS:";
+    var_dump($oldIds);
+
+    echo "<hr> NUEVOS:";
+    var_dump($newIds);
+
+    echo "<hr> Eliminar:";
+    $deleteIds = array_diff($oldIds, $newIds);
+    var_dump($deleteIds);
+    //Eliminar en la BD
+    $groupDAO->deleteUsers($deleteIds, $idGroup);
+    
+    echo "<hr> Insertar:";
+    $insertIds = array_diff($newIds, $oldIds);
+    var_dump($insertIds);
+    //añadir en la BD
+    $groupDAO->insertUsers($insertIds, $idGroup);
+
+    $this->show($param);
   }
 }

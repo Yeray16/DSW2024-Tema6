@@ -31,4 +31,13 @@ class User {
     $groupDAO = new Groupimplement();
     return $groupDAO->findGroupsByUserId($this->id);
   }
+
+  // public function showGroups () {
+  //   $groups = $this->groups();
+  //   $names = array_map(
+  //     fn($group) => $group -> getName(), 
+  //     $groups
+  //   );
+  //   return implode(',' ,$names);
+  // }
 }

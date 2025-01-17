@@ -77,4 +77,25 @@ class Groupimplement  {
     return $groups;
   }
 
+  public function deleteUsers (array $id_users, $id_group) {
+    $id_user = null;
+    $query = "DELETE FROM group_user WHERE id_user = :id_user AND id_group = :id_group";
+    $stmt = $this->db->getConnection()->prepare($query);
+    $stmt->bindParam(':id_user', $id_user);
+    $stmt->bindParam(':id_group', $id_group);
+    foreach($id_users as $id_user) {
+      $stmt->execute();
+    }
+  }
+
+  public function insertUsers (array $id_users, $id_group) {
+    $id_user = null;
+    $query = "INSERT INTO group_user (id_user, id_group) VALUES (:id_user, :id_group)";
+    $stmt = $this->db->getConnection()->prepare($query);
+    $stmt->bindParam(':id_user', $id_user);
+    $stmt->bindParam(':id_group', $id_group);
+    foreach($id_users as $id_user) {
+      $stmt->execute();
+    }
+  }
 }
